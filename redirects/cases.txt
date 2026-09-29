@@ -19,3 +19,7 @@ umple.org /examples/ https://github.com/umple/Umple/wiki/examples
 umple.org /nosuch/ https://umple.org/
 other.umple.org / https://cruise.umple.org/umple
 example.com / https://cruise.umple.org/index.shtml
+umple.org /?example=Airline /umpleonline/?example=Airline
+umple.org /dl https://new.umple.org/manual/UmpleTools.html
+umple.org /dl?x https://new.umple.org/manual/UmpleTools.html?x
+umple.org /code/?tab=readme https://github.com/umple/umple?tab=readme

@@ -31,25 +31,21 @@
 
     case "try.umple.org":
       $loc="/umpleonline/";
-      if($query != "") $query="?".$query; // keep ?example=... a real query
       break;
 
     case "new.umple.org":
     case "www.umple.org":
     case "umple.org":
-      $secondloc=strpos($_SERVER['REQUEST_URI'],"/",1);
-      $stringprefix=substr($_SERVER['REQUEST_URI'],1,$secondloc-1);
+      $path=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+      $stringprefix=explode("/", trim($path, "/"))[0];
       switch ($stringprefix) {
-        // front page: without this, umple.org would redirect to itself once it is served here
-        case "": $loc="/index.html"; break;
+        // front page; with a query (?example=...) open UmpleOnline, as cruise does
+        case "": $loc = $query == "" ? "/index.html" : "/umpleonline/"; break;
 
         // critical internal pages
         case "dl": $loc="https://new.umple.org/manual/UmpleTools.html"; break;
 
-        case "try":
-          $loc="/umpleonline/";
-          if($query != "") $query="?".$query;
-          break;
+        case "try": $loc="/umpleonline/"; break;
 
         case "jenkins": $loc="https://jenkins.umple.org"; break;
 
@@ -168,6 +164,8 @@
   if($wikip != "") $loc="https://github.com/umple/Umple/wiki/".$wikip;
   if($manp != "") $loc="/umple/".$manp;
 
+  // prs has already turned the query into a path
+  if($query != "" && $query[0] != "/") $query="?".$query;
   header("Location: ".$loc.$query);
   exit;
 
