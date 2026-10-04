@@ -6,4 +6,4 @@ On the server it lives at `/var/www/html/mapping.php`. The `index.php` in the we
 
     mkdir /var/www/html/NAME && ln -s ../mapping.php /var/www/html/NAME/index.php
 
-Run `./test.sh` before copying a change to the server. It needs PHP and curl.
+Run `./test.sh` before copying a change to the server. It needs PHP and curl, and uses port 8199 unless `PORT` is set. It runs `mapping.php` on its own, so it checks the redirects but not the web server's configuration.

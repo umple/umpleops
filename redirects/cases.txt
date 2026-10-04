@@ -23,3 +23,13 @@ umple.org /?example=Airline /umpleonline/?example=Airline
 umple.org /dl https://new.umple.org/manual/UmpleTools.html
 umple.org /dl?x https://new.umple.org/manual/UmpleTools.html?x
 umple.org /code/?tab=readme https://github.com/umple/umple?tab=readme
+try.umple.org /?/Airline /umpleonline/?/Airline
+cruise.umple.org /?/Airline /umpleonline/?/Airline
+umple.org /try/?/Airline /umpleonline/?/Airline
+umple.org /dl?/x https://new.umple.org/manual/UmpleTools.html?/x
+umple.org /changed/?label%3Abug https://github.com/umple/Umple/issues?q=is%3Aissue+is%3Aclosed+sort%3Aupdated-desc+label%3Abug
+umple.org /tcl/?lang=en https://uniweb.uottawa.ca/members/119/profile?embed=2&lang=en
+umple.org /prs?123 https://github.com/umple/umple/pulls/123
+www.umple.org /?example=Airline /umpleonline/?example=Airline
+new.umple.org /try?x /umpleonline/?x
+umple.org /? /index.html

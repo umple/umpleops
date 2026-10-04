@@ -65,8 +65,9 @@
           $loc="https://github.com/umple/umple"; break;
 
         case "prs":
-          if($query !="") $query="/".$query; // convert ? to /
-          $loc="https://github.com/umple/umple/pulls"; break;
+          $loc="https://github.com/umple/umple/pulls";
+          if($query !="") $loc.="/".$query; // convert ? to /
+          $query=""; break;
         case "bugs":
         case "issues":
           $loc="https://github.com/umple/umple/issues"; break;
@@ -82,7 +83,8 @@
         case "skills":
           $loc="https://github.com/umple/umple-skills"; break;
 
-        case "changed": $loc="https://github.com/umple/Umple/issues?q=is%3Aissue+is%3Aclosed+sort%3Aupdated-desc+"; break;
+        // the query extends the search
+        case "changed": $loc="https://github.com/umple/Umple/issues?q=is%3Aissue+is%3Aclosed+sort%3Aupdated-desc+".$query; $query=""; break;
         case "projects": $loc="https://github.com/orgs/umple/projects"; break;
         case "releases": $loc="https://github.com/umple/umple/releases"; break;
         case "research": $loc="https://github.com/umple/umple/labels/Type-ResearchGrad"; break;
@@ -164,8 +166,8 @@
   if($wikip != "") $loc="https://github.com/umple/Umple/wiki/".$wikip;
   if($manp != "") $loc="/umple/".$manp;
 
-  // prs has already turned the query into a path
-  if($query != "" && $query[0] != "/") $query="?".$query;
+  // pass on any query not used above, after the destination's own query if it has one
+  if($query != "") $query=(strpos($loc, "?") === FALSE ? "?" : "&").$query;
   header("Location: ".$loc.$query);
   exit;
 
