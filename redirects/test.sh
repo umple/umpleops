@@ -5,17 +5,19 @@ cd "$(dirname "$0")" || exit 1
 port=${PORT:-8199}
 base="http://127.0.0.1:$port"
 
-php -S 127.0.0.1:$port mapping.php >/dev/null 2>&1 &
+log=$(mktemp)
+php -S 127.0.0.1:$port mapping.php >"$log" 2>&1 &
 server=$!
-trap 'kill $server 2>/dev/null' EXIT
+trap 'kill $server 2>/dev/null; wait $server 2>/dev/null; rm -f "$log"' EXIT
 
-# Wait until mapping.php answers with a redirect. If php exits instead (e.g. the port
-# is taken), stop rather than test whatever else is listening there.
+# Wait until this php reports that it is listening. If the port is taken it exits
+# instead, and the tests must not run against whatever else is listening there.
 for i in $(seq 50); do
-  kill -0 $server 2>/dev/null || { echo "php could not serve on port $port"; exit 1; }
-  [ -n "$(curl -s --max-time 1 -o /dev/null -w '%{redirect_url}' -H 'Host: umple.org' "$base/")" ] && break
+  grep -q " started" "$log" && break
+  kill -0 $server 2>/dev/null || { echo "php could not serve on port $port:"; cat "$log"; exit 1; }
   sleep 0.1
 done
+grep -q " started" "$log" || { echo "php did not start on port $port"; exit 1; }
 
 count=0
 failed=0
