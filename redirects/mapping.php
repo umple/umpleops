@@ -6,7 +6,8 @@
   $query=$_SERVER['QUERY_STRING'];
   $wikip="";
   $manp="";
-  $theServer=$_SERVER['HTTP_HOST'];
+  // clients such as curl may send the host in capitals or with :443
+  $theServer=strtolower(explode(":", $_SERVER['HTTP_HOST'])[0]);
   switch ($theServer) {
 
     // Direct legacy connect from  UOttawa

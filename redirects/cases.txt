@@ -34,3 +34,6 @@ www.umple.org /?example=Airline /umpleonline/?example=Airline
 new.umple.org /try?x /umpleonline/?x
 umple.org /? /index.html
 umple.org /test/ https://test.umple.org/test/umpleonline/umple.php
+WWW.UMPLE.ORG / /index.html
+www.umple.org:443 / /index.html
+Try.Umple.Org:443 /?example=Airline /umpleonline/?example=Airline
