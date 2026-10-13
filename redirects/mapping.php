@@ -141,9 +141,8 @@
         case "twitter":  $loc="https://x.com/umpleorg"; break;
         case "x":  $loc="https://x.com/umpleorg"; break;
 
-
+        case "test": $loc="https://test.umple.org/test/umpleonline/umple.php"; break;
 /*
-        case "test": $loc="https://cruise.umple.org/test/umpleonline/"; break;
         case "umpr": $loc="https://umpr.a4word.com/?"; break;
 
 

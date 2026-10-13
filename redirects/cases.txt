@@ -33,3 +33,4 @@ umple.org /prs?123 https://github.com/umple/umple/pulls/123
 www.umple.org /?example=Airline /umpleonline/?example=Airline
 new.umple.org /try?x /umpleonline/?x
 umple.org /? /index.html
+umple.org /test/ https://test.umple.org/test/umpleonline/umple.php
