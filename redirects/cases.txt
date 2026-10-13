@@ -37,3 +37,4 @@ umple.org /test/ https://test.umple.org/test/umpleonline/umple.php
 WWW.UMPLE.ORG / /index.html
 www.umple.org:443 / /index.html
 Try.Umple.Org:443 /?example=Airline /umpleonline/?example=Airline
+OTHER.UMPLE.ORG / https://cruise.umple.org/umple

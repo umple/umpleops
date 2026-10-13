@@ -158,7 +158,7 @@
       break;
 
     default:
-       if (strpos($_SERVER['HTTP_HOST'],"umple.org") !== FALSE)
+       if (strpos($theServer,"umple.org") !== FALSE)
           $loc="https://cruise.umple.org/umple";
        else
           $loc="https://cruise.umple.org/index.shtml";
